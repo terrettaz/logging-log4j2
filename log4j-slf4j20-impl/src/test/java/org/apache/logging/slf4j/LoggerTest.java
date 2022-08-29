@@ -127,6 +127,12 @@ public class LoggerTest {
         MDC.popByKey("TestYear");
         logger.debug("Debug message");
         verify("List", "o.a.l.s.LoggerTest Debug message MDC{TestYear=2010} NDC[]" + Strings.LINE_SEPARATOR);
+        MDC.popByKey("TestYear");
+        logger.debug("Debug message");
+        verify("List", "o.a.l.s.LoggerTest Debug message MDC{} NDC[]" + Strings.LINE_SEPARATOR);
+        MDC.pushByKey("TestYear", "2001");
+        logger.debug("Debug message");
+        verify("List", "o.a.l.s.LoggerTest Debug message MDC{TestYear=2001} NDC[]" + Strings.LINE_SEPARATOR);
         MDC.clear();
         logger.debug("Debug message");
         verify("List", "o.a.l.s.LoggerTest Debug message MDC{} NDC[]" + Strings.LINE_SEPARATOR);

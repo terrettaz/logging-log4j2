@@ -109,6 +109,8 @@ public class Log4jMDCAdapter implements MDCAdapter {
         String head = threadLocalMapOfDeques.peekByKey(key);
         if (head != null) {
             put(key, head);
+        } else {
+            remove(key);
         }
         return value;
     }
