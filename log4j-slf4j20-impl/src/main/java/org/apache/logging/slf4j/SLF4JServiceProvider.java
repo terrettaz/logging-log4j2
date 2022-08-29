@@ -52,9 +52,7 @@ public class SLF4JServiceProvider implements org.slf4j.spi.SLF4JServiceProvider 
     public void initialize() {
         markerFactory = new Log4jMarkerFactory();
         loggerFactory = new Log4jLoggerFactory(markerFactory);
-        // TODO find a way to fetch configuration option
-        boolean configSlf4jMDCDequeEnabled = true;
-        mdcAdapter = new Log4jMDCAdapter(configSlf4jMDCDequeEnabled);
+        mdcAdapter = new Log4jMDCAdapter();
     }
 
 
